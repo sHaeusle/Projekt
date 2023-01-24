@@ -1,0 +1,15 @@
+Strumwarnung Informationen
+
+In Zeile 18/27/37/45/52
+ist es möglich unterschiedliche Nachrichten für die jeweiligen Nummern zu formulieren und ändern
+
+Neue Nummern lassen sich mit folgendem Code integrieren:
+Wichtig ist, das die variable geändert werden, bspw fortlaufend nummer6 nummer7 nummer8,...
+und dazu jeweils ein weiteres Item hinzufügen welches bei getItem('Handynummer_1') in '' stehen muss
+Außerdem muss auch in der HttpUtil.executeUrl Methode die Variable bspw nummer1 geändert werden
+das gleiche auch beim Key1
+
+ var nummer1 = itemRegistry.getItem('Handynummer_1').getState() 
+         var KEY1 =  itemRegistry.getItem('KEY_1').getState()
+         HttpUtil.executeUrl("GET", "https://api.callmebot.com/whatsapp.php?phone="+ nummer1 +"&apikey="+ KEY1 +"&text=" + urlmessage , 2000) 
+         
