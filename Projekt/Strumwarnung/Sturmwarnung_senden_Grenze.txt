@@ -1,0 +1,54 @@
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      itemName: Mobile_Alerts__Ruckgabewert
+    type: core.ItemStateUpdateTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      blockSource: <xml xmlns="https://developers.google.com/blockly/xml"><block
+        type="controls_if" id="p9M{.oizS%1SUmVYYq%y" x="310" y="240"><mutation
+        else="1"></mutation><value name="IF0"><block type="logic_operation"
+        id="O0E}0~t^S)|)pQfBvWH*"><field name="OP">OR</field><value
+        name="A"><block type="logic_compare" id="8F52*W+_E8T+2Q2FQMA["><field
+        name="OP">GT</field><value name="A"><block type="oh_getitem_state"
+        id="lIYbudVRrU;sMz/!+bet"><value name="itemName"><shadow type="oh_item"
+        id="g_hGT/`}BQ@f3~lRTF_K"><field
+        name="itemName">Windstaerke</field></shadow></value></block></value><value
+        name="B"><block type="oh_getitem_state" id="C[Up:C{@;*?pu`ZGywJm"><value
+        name="itemName"><shadow type="oh_item" id="SMivf8Yc3mObVZqNCliX"><field
+        name="itemName">Balkon_StrumwarnungWind_Grenze</field></shadow></value></block></value></block></value><value
+        name="B"><block type="logic_compare" id="N5UP`Zam,{=^#*#I(:Ik"><field
+        name="OP">GT</field><value name="A"><block type="oh_getitem_state"
+        id="Ju%t|_b,Xr5$2}$2ff*{"><value name="itemName"><shadow type="oh_item"
+        id="9BxH^]:=2?3_)0w]KH1W"><field
+        name="itemName">Wind_Boehe</field></shadow></value></block></value><value
+        name="B"><block type="oh_getitem_state" id="E5N/L1C+n@aN^2Hv4rrr"><value
+        name="itemName"><shadow type="oh_item" id=")tF0Asg_9MpboZXlBAL;"><field
+        name="itemName">Balkon_StrumwarnungBoe_Grenze</field></shadow></value></block></value></block></value></block></value><statement
+        name="DO0"><block type="oh_event" id="5?q4FA%Jtm2x*v*7_#1|"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="MHvFneRZj~j]*Qun7jIZ"><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="A?B0s6|4FoHTM23@b(q_"><field
+        name="itemName">Balkon_Strumwarnung_senden</field></shadow></value></block></statement><statement
+        name="ELSE"><block type="oh_event" id="WphizqiB)+Svq_{`r}Ml"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="FGVP#-m{nmaC}b0Ua{$,"><field
+        name="TEXT">OFF</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="-`c%V#pkfe@8~S_PcuH_"><field
+        name="itemName">Balkon_Strumwarnung_senden</field></shadow></value></block></statement></block></xml>
+      type: application/javascript
+      script: >
+        if (itemRegistry.getItem('Windstaerke').getState() >
+        itemRegistry.getItem('Balkon_StrumwarnungWind_Grenze').getState() ||
+        itemRegistry.getItem('Wind_Boehe').getState() >
+        itemRegistry.getItem('Balkon_StrumwarnungBoe_Grenze').getState()) {
+          events.sendCommand('Balkon_Strumwarnung_senden', 'ON');
+        } else {
+          events.sendCommand('Balkon_Strumwarnung_senden', 'OFF');
+        }
+    type: script.ScriptAction

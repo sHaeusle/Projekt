@@ -1,0 +1,17 @@
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      itemName: Hobbyraum_Infrarotheizung_manuell
+      command: ON
+    type: core.ItemCommandTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      enable: true
+      ruleUIDs:
+        - Hobbyraum_Infrarotheizung_off
+        - Hobbyraum_Infrarotheizung_on
+    type: core.RuleEnablementAction

@@ -1,0 +1,141 @@
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      itemName: Mobile_Alerts_Ruckgabewert
+    type: core.ItemStateUpdateTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      blockSource: <xml
+        xmlns="https://developers.google.com/blockly/xml"><variables><variable
+        id="*2yvSXo[e},Pt;bbhA9D">Rückgabewert</variable><variable
+        id="X0P|CZn1yp-T;w8mmNww">Sensorwert_kmh</variable><variable
+        id="A}}Ucf0E*I$6q[M*1o8c">Sensorwert_Boehe</variable></variables><block
+        type="variables_set" id="DGd/*l#:qV$mt_/txd!(" x="75" y="97"><field
+        name="VAR" id="*2yvSXo[e},Pt;bbhA9D">Rückgabewert</field><value
+        name="VALUE"><block type="text_join" id="N#;T2a{G{+)_J(RbMjg{"><mutation
+        items="1"></mutation><value name="ADD0"><block type="oh_getitem_state"
+        id="JH)g,i!o`x^gy)YoJ4ZO"><value name="itemName"><shadow type="oh_item"
+        id="Umbt1CyzI=W~kZn5klB)"><field
+        name="itemName">Mobile_Alerts_Ruckgabewert</field></shadow></value></block></value></block></value><next><block
+        type="variables_set" id="9:y:[-jyR3/gM/RH(u^V"><field name="VAR"
+        id="X0P|CZn1yp-T;w8mmNww">Sensorwert_kmh</field><value
+        name="VALUE"><block type="oh_transformation"
+        id="oK@CB_Bf!Z`x|-`+=_w^"><field name="type">JSONPATH</field><value
+        name="value"><shadow type="text" id="1pEjUg}sZY;MsQGRu(%+"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="@csdJarLDPGRtS|=tatq"><field name="VAR"
+        id="*2yvSXo[e},Pt;bbhA9D">Rückgabewert</field></block></value><value
+        name="function"><shadow type="text" id="kv[ZD|@qm2=qnTT0M.nY"><field
+        name="TEXT">$.devices[0].measurement.ws</field></shadow></value></block></value><next><block
+        type="variables_set" id="b7v)Eu4C6[37`8%f*s!!"><field name="VAR"
+        id="X0P|CZn1yp-T;w8mmNww">Sensorwert_kmh</field><value
+        name="VALUE"><block type="math_arithmetic"
+        id="Ap@RJ;]OH=La^;|]@4v8"><field name="OP">MULTIPLY</field><value
+        name="A"><shadow type="math_number" id="Aoq,vY]pLreoCeBn:.2s"><field
+        name="NUM">1</field></shadow><block type="variables_get"
+        id=",*.CL!W4JfPj#N-v/AJI"><field name="VAR"
+        id="X0P|CZn1yp-T;w8mmNww">Sensorwert_kmh</field></block></value><value
+        name="B"><shadow type="math_number" id="#A{O{Jj?g1:=!6z+*UwS"><field
+        name="NUM">3.6</field></shadow></value></block></value><next><block
+        type="variables_set" id="x4Xp+{Zn[Gi,Cq=Ha,v^"><field name="VAR"
+        id="X0P|CZn1yp-T;w8mmNww">Sensorwert_kmh</field><value
+        name="VALUE"><block type="math_arithmetic"
+        id="FL#r=dM?VTKiYx{DKg~H"><field name="OP">DIVIDE</field><value
+        name="A"><shadow type="math_number"><field
+        name="NUM">1</field></shadow><block type="math_round"
+        id="i8x{%:7G]N?iK8grp~X~"><field name="OP">ROUND</field><value
+        name="NUM"><shadow type="math_number"><field
+        name="NUM">3.1</field></shadow><block type="math_arithmetic"
+        id="(HcaRo@u]Jw5UrjJx]$u"><field name="OP">MULTIPLY</field><value
+        name="A"><shadow type="math_number"><field
+        name="NUM">1</field></shadow><block type="variables_get"
+        id="o7Z}^Mx]~#qu_PacWpos"><field name="VAR"
+        id="X0P|CZn1yp-T;w8mmNww">Sensorwert_kmh</field></block></value><value
+        name="B"><shadow type="math_number" id="Y#a#.*u}%;hza-gIs#Iu"><field
+        name="NUM">100</field></shadow></value></block></value></block></value><value
+        name="B"><shadow type="math_number" id=",eFDfZx`RT{FW-/?H?k8"><field
+        name="NUM">100</field></shadow></value></block></value><next><block
+        type="oh_event" id="CMAgVPXWV61^tD8L+Km9"><field
+        name="eventType">postUpdate</field><value name="value"><shadow
+        type="text" id="3{hHqXnFArM,+Yi(kOY!"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="{m5oO(S6F1b*[[DR^`E7"><field name="VAR"
+        id="X0P|CZn1yp-T;w8mmNww">Sensorwert_kmh</field></block></value><value
+        name="itemName"><shadow type="oh_item" id="Px9~o8Ab}|hIK/KQ+UY#"><field
+        name="itemName">Windstaerke</field></shadow></value><next><block
+        type="variables_set" id="_o0tjF8p-YT2IFfd*^gm"><field name="VAR"
+        id="A}}Ucf0E*I$6q[M*1o8c">Sensorwert_Boehe</field><value
+        name="VALUE"><block type="oh_transformation"
+        id="/8;Af#d9Q5Gf]hjSA1T$"><field name="type">JSONPATH</field><value
+        name="value"><shadow type="text"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="A$|Gz=kJuh+To_d!D8Ad"><field name="VAR"
+        id="*2yvSXo[e},Pt;bbhA9D">Rückgabewert</field></block></value><value
+        name="function"><shadow type="text" id="T/48ahNj!XD.U|+9_I!9"><field
+        name="TEXT">$.devices[0].measurement.wg</field></shadow></value></block></value><next><block
+        type="variables_set" id="UR2.J@oQ$7ft]##7T2t:"><field name="VAR"
+        id="A}}Ucf0E*I$6q[M*1o8c">Sensorwert_Boehe</field><value
+        name="VALUE"><block type="math_arithmetic"
+        id="q^fXRkn+-Z$VDeW-PodU"><field name="OP">MULTIPLY</field><value
+        name="A"><shadow type="math_number" id="(q1KZ*=##bA6(Tx%%n$P"><field
+        name="NUM">1</field></shadow><block type="variables_get"
+        id="B|Nf3/c?-C!%uCNv:GN!"><field name="VAR"
+        id="A}}Ucf0E*I$6q[M*1o8c">Sensorwert_Boehe</field></block></value><value
+        name="B"><shadow type="math_number" id="[86$LoT87Crq6MmNZMl("><field
+        name="NUM">3.6</field></shadow></value></block></value><next><block
+        type="variables_set" id="?OW!DZ6L9G{z^6H^k#lX"><field name="VAR"
+        id="A}}Ucf0E*I$6q[M*1o8c">Sensorwert_Boehe</field><value
+        name="VALUE"><block type="math_arithmetic"
+        id="*$_Hl_*kY/MG)P=T4MdT"><field name="OP">DIVIDE</field><value
+        name="A"><shadow type="math_number" id="HQVgjrZfe927KS/)Q@!}"><field
+        name="NUM">1</field></shadow><block type="math_round"
+        id="pYfs{.iqIa!#2K99]Eu2"><field name="OP">ROUND</field><value
+        name="NUM"><shadow type="math_number" id="f,dtnWauto0S?[Sp*)Ag"><field
+        name="NUM">3.1</field></shadow><block type="math_arithmetic"
+        id="gAC-,,agOs1$lo}h;B.a"><field name="OP">MULTIPLY</field><value
+        name="A"><shadow type="math_number" id="J2.:BffAv#CEo-Sz=y.["><field
+        name="NUM">1</field></shadow><block type="variables_get"
+        id="y}SWv6TAR[54aPh6=?_v"><field name="VAR"
+        id="A}}Ucf0E*I$6q[M*1o8c">Sensorwert_Boehe</field></block></value><value
+        name="B"><shadow type="math_number" id="o~|Zw}NjTl=RWdN}sjJA"><field
+        name="NUM">100</field></shadow></value></block></value></block></value><value
+        name="B"><shadow type="math_number" id="pSP#L.hmDY#aEE~FtQX="><field
+        name="NUM">100</field></shadow></value></block></value><next><block
+        type="oh_event" id="4]#N3{o_1F9{ffzFJ`S7"><field
+        name="eventType">postUpdate</field><value name="value"><shadow
+        type="text"><field name="TEXT">value</field></shadow><block
+        type="variables_get" id="8Wmz8,]mw@~|(J?Vp-ZR"><field name="VAR"
+        id="A}}Ucf0E*I$6q[M*1o8c">Sensorwert_Boehe</field></block></value><value
+        name="itemName"><shadow type="oh_item" id="Hl8Vb`{;^ad#uaqo=AYy"><field
+        name="itemName">Wind_Boehe</field></shadow></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></xml>
+      type: application/javascript
+      script: >
+        var R_C3_BCckgabewert, Sensorwert_kmh, Sensorwert_Boehe;
+
+
+        var transformation = Java.type('org.openhab.core.transform.actions.Transformation');
+
+
+
+        R_C3_BCckgabewert = String(itemRegistry.getItem('Mobile_Alerts_Ruckgabewert').getState());
+
+        Sensorwert_kmh = transformation.transform('JSONPATH', '$.devices[0].measurement.ws', R_C3_BCckgabewert);
+
+        Sensorwert_kmh = Sensorwert_kmh * 3.6;
+
+        Sensorwert_kmh = Math.round(Sensorwert_kmh * 100) / 100;
+
+        events.postUpdate('Windstaerke', Sensorwert_kmh);
+
+        Sensorwert_Boehe = transformation.transform('JSONPATH', '$.devices[0].measurement.wg', R_C3_BCckgabewert);
+
+        Sensorwert_Boehe = Sensorwert_Boehe * 3.6;
+
+        Sensorwert_Boehe = Math.round(Sensorwert_Boehe * 100) / 100;
+
+        events.postUpdate('Wind_Boehe', Sensorwert_Boehe);
+    type: script.ScriptAction

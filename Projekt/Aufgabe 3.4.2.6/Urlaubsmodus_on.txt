@@ -1,0 +1,90 @@
+configuration: {}
+triggers:
+  - id: "6"
+    configuration:
+      cronExpression: 0/5 * * * * ? *
+    type: timer.GenericCronTrigger
+conditions:
+  - inputs: {}
+    id: "1"
+    configuration:
+      itemName: Urlaubsmodus
+      state: ON
+      operator: =
+    type: core.ItemStateCondition
+actions:
+  - inputs: {}
+    id: "5"
+    configuration:
+      enable: false
+      ruleUIDs:
+        - 5c42108a52
+        - 2c39829d89
+        - Hobbyraum_Infrarotheizung_off
+        - Hobbyraum_Infrarotheizung_on
+        - Hobbyraum_Infrarotheizung_Ueberhitzungsschutz
+        - Nutzung_Infrarotheizung_ueber_Boiler
+        - Warmwasserboiler_Anschalten
+        - Warmwasserboiler_kombiniert_Tag
+        - Warmwasserboiler_kombiniert_Tag_Sommer
+        - edf0027956
+        - 0d3cbc0528
+    type: core.RuleEnablementAction
+  - inputs: {}
+    id: "2"
+    configuration:
+      blockSource: <xml xmlns="https://developers.google.com/blockly/xml"><block
+        type="controls_if" id="CWHn*_R%t.ShYf0hn@v@" x="208" y="138"><mutation
+        else="1"></mutation><value name="IF0"><block type="logic_operation"
+        id=",KZZoho.56-K^k+~(I?O"><field name="OP">OR</field><value
+        name="A"><block type="logic_compare" id="y^B{bisRg5]L4$_Jz7!?"><field
+        name="OP">LT</field><value name="A"><block type="oh_getitem_state"
+        id="42+!JEIFP^W2jW=1I8DU"><value name="itemName"><shadow type="oh_item"
+        id="57iv9of7~=wx?$]i[4uN"><field
+        name="itemName">Hobbyraum_Temperatur</field></shadow></value></block></value><value
+        name="B"><block type="text" id="7=HY*-MH-GgS9]w:a)]V"><field
+        name="TEXT">19</field></block></value></block></value><value
+        name="B"><block type="logic_compare" id="eYsL`4agIAE{FV,Z4LFf"><field
+        name="OP">GT</field><value name="A"><block type="oh_getitem_state"
+        id="pDC}jHx$L_+yqWTW@/6Z"><value name="itemName"><shadow type="oh_item"
+        id="I?YS*0dD3JyxWx[P@L?j"><field
+        name="itemName">Hobbyraum_Luftfeuchte</field></shadow></value></block></value><value
+        name="B"><block type="text" id="Xz6m}Ks#+D-BBAe:c4|T"><field
+        name="TEXT">75</field></block></value></block></value></block></value><statement
+        name="DO0"><block type="oh_event" id="Oq9XYHtDB*}j[z*iFfF*"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="u?{{9MHq(1h+rg/Z^w7E"><field
+        name="TEXT">value</field></shadow><block type="text"
+        id="0EI4_e`DG9qZJ8iS!^Eq"><field
+        name="TEXT">ON</field></block></value><value name="itemName"><shadow
+        type="oh_item" id="$/v)?Yi];ey|]*8(RjY{"><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem_state"
+        id="[B.r;U:PU%eAj8zJ3)A%"><value name="itemName"><shadow type="oh_item"
+        id="VP4g3+Q=Hw3D]QC9X38V"><field
+        name="itemName">Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2</field></shadow></value></block></value></block></statement><statement
+        name="ELSE"><block type="oh_event" id="8o6pPdE-AviO,n+x1~ve"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="!=c|j_*c+3UOD96*mk3q"><field
+        name="TEXT">value</field></shadow><block type="text"
+        id="C=}Z{b#cSdM3maV@#=}j"><field
+        name="TEXT">OFF</field></block></value><value name="itemName"><shadow
+        type="oh_item" id="k.J7HWT{Rf9[ZG57hWW9"><field
+        name="itemName">MyItem</field></shadow><block type="oh_getitem_state"
+        id="fpEh,1J8;D}-:B/L_IAf"><value name="itemName"><shadow type="oh_item"
+        id="3V[fOy$6iT?whoXP9tS#"><field
+        name="itemName">Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2</field></shadow></value></block></value></block></statement></block></xml>
+      type: application/javascript
+      script: >
+        if (itemRegistry.getItem('Hobbyraum_Temperatur').getState() < '19' ||
+        itemRegistry.getItem('Hobbyraum_Luftfeuchte').getState() > '75') {
+          events.sendCommand(itemRegistry.getItem('Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2').getState(), 'ON');
+        } else {
+          events.sendCommand(itemRegistry.getItem('Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2').getState(), 'OFF');
+        }
+    type: script.ScriptAction
+  - inputs: {}
+    id: "3"
+    configuration:
+      command: OFF
+      itemName: Warmwasserboiler
+    type: core.ItemCommandAction

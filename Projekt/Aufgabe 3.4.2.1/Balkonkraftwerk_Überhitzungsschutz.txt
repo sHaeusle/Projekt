@@ -1,0 +1,107 @@
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      itemName: MinutenGrenze
+    type: core.ItemStateUpdateTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "3"
+    configuration:
+      blockSource: <xml
+        xmlns="https://developers.google.com/blockly/xml"><variables><variable
+        id="WK/nh$xaEW^o:.KKNW)L">Intervall</variable><variable
+        id="AOl+|GGbDz[_y=z*-~vC">Counter</variable><variable
+        id="Ava/Jc(4M3?gt!WUk3K~">Ausschaltdauer</variable><variable
+        id="k1ez_3==`B;uqf2,*j_M">Intervall2</variable></variables><block
+        type="controls_whileUntil" id="|QJAnD^/Ny$M|U8zCyH5" x="201"
+        y="133"><field name="MODE">WHILE</field><value name="BOOL"><block
+        type="logic_boolean" id="]0:Em+P]KAgi:F$IMY:1"><field
+        name="BOOL">TRUE</field></block></value><statement name="DO"><block
+        type="variables_set" id="+s@8;i)jPJ^znLjoC]3G"><field name="VAR"
+        id="WK/nh$xaEW^o:.KKNW)L">Intervall</field><value name="VALUE"><block
+        type="oh_getitem_state" id="QqSgE]X?3~lk;/qjal9p"><value
+        name="itemName"><shadow type="oh_item" id="o?[?o*$B3xpowQ!M?{wE"><field
+        name="itemName">MinutenGrenze</field></shadow></value></block></value><next><block
+        type="controls_for" id="f^fedDO1|_SUT-d|.N[s"><field name="VAR"
+        id="AOl+|GGbDz[_y=z*-~vC">Counter</field><value name="FROM"><shadow
+        type="math_number" id="YJ4:g*Fv+~a5#M7#eDl."><field
+        name="NUM">1</field></shadow></value><value name="TO"><shadow
+        type="math_number" id="SNt^e:!]RbUD(q*rsXdS"><field
+        name="NUM">10</field></shadow><block type="variables_get"
+        id="yq8_Z^$;P%spqTvbpLqy"><field name="VAR"
+        id="WK/nh$xaEW^o:.KKNW)L">Intervall</field></block></value><value
+        name="BY"><shadow type="math_number" id="=*-{VN*;.xg_K^6Ul6Yc"><field
+        name="NUM">1</field></shadow></value><statement name="DO"><block
+        type="oh_sleep" id="R3^woMB@EN]L]MRc`Xb1"><field
+        name="milliseconds">1000</field></block></statement><next><block
+        type="variables_set" id="vq%[M}4Zr-C=tuVD(q5C"><field name="VAR"
+        id="AOl+|GGbDz[_y=z*-~vC">Counter</field><value name="VALUE"><block
+        type="math_number" id="Lqi:nGm@ro18ZE%c)+XQ"><field
+        name="NUM">0</field></block></value><next><block type="oh_event"
+        id="4]P7icVm#--pQkh_Fl[O"><field
+        name="eventType">postUpdate</field><value name="value"><shadow
+        type="text" id="(%!$P2vL3FenK$W)S0H`"><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="L_{V7Jg=*FI(bs/pbVI)"><field
+        name="itemName">Schalter</field></shadow></value><next><block
+        type="variables_set" id="/`YNgw?KiGQA|_?Jla8?"><field name="VAR"
+        id="Ava/Jc(4M3?gt!WUk3K~">Ausschaltdauer</field><value
+        name="VALUE"><block type="oh_getitem_state"
+        id="OFpdv^X+wU`AW8%iQsAo"><value name="itemName"><shadow type="oh_item"
+        id=";ZC(#e_93/LDqq88:PwV"><field
+        name="itemName">Balkon_Dauer_Ueberhitzungsschutz</field></shadow></value></block></value><next><block
+        type="controls_for" id="d|OgcXDoY]d#f-2Z)gCt"><field name="VAR"
+        id="k1ez_3==`B;uqf2,*j_M">Intervall2</field><value name="FROM"><shadow
+        type="math_number" id="i;z4T$I!pBpdz|}aRDMY"><field
+        name="NUM">1</field></shadow></value><value name="TO"><shadow
+        type="math_number"><field name="NUM">10</field></shadow><block
+        type="variables_get" id="DU+1Z_r9Y^Chd]a@$c@}"><field name="VAR"
+        id="Ava/Jc(4M3?gt!WUk3K~">Ausschaltdauer</field></block></value><value
+        name="BY"><shadow type="math_number" id="%5Qms-G.ab)F!:$63i!5"><field
+        name="NUM">1</field></shadow></value><statement name="DO"><block
+        type="oh_sleep" id="oz7?=ph5I3RF`8$U6m2w"><field
+        name="milliseconds">1000</field></block></statement><next><block
+        type="variables_set" id="!m+w;_sy9[xB(1,mq_kR"><field name="VAR"
+        id="k1ez_3==`B;uqf2,*j_M">Intervall2</field><value name="VALUE"><block
+        type="math_number" id="yAFCtZ%yHE}2rfZ9?M,B"><field
+        name="NUM">0</field></block></value><next><block type="oh_event"
+        id=",LMfOe|`]g;y8Mt%h,z$"><field
+        name="eventType">postUpdate</field><value name="value"><shadow
+        type="text" id="^;,^t/rzt):D@D,NST%^"><field
+        name="TEXT">OFF</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="z`a}[c-`uYC?GNb.nC+1"><field
+        name="itemName">Schalter</field></shadow></value></block></next></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>
+      type: application/javascript
+      script: >
+        var Intervall, Counter, Ausschaltdauer, Intervall2;
+
+
+        var thread = Java.type('java.lang.Thread')
+
+
+
+        while (true) {
+          Intervall = itemRegistry.getItem('MinutenGrenze').getState();
+          var Counter_inc = 1;
+          if (1 > Intervall) {
+            Counter_inc = -Counter_inc;
+          }
+          for (Counter = 1; Counter_inc >= 0 ? Counter <= Intervall : Counter >= Intervall; Counter += Counter_inc) {
+            thread.sleep(1000);
+          }
+          Counter = 0;
+          events.postUpdate('Schalter', 'ON');
+          Ausschaltdauer = itemRegistry.getItem('Balkon_Dauer_Ueberhitzungsschutz').getState();
+          var Intervall2_inc = 1;
+          if (1 > Ausschaltdauer) {
+            Intervall2_inc = -Intervall2_inc;
+          }
+          for (Intervall2 = 1; Intervall2_inc >= 0 ? Intervall2 <= Ausschaltdauer : Intervall2 >= Ausschaltdauer; Intervall2 += Intervall2_inc) {
+            thread.sleep(1000);
+          }
+          Intervall2 = 0;
+          events.postUpdate('Schalter', 'OFF');
+        }
+    type: script.ScriptAction

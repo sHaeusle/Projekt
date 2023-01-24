@@ -1,0 +1,17 @@
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      itemName: Balkon_Infrarotheizung_manuell
+      command: ON
+    type: core.ItemCommandTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      enable: true
+      ruleUIDs:
+        - 5c42108a52
+        - 2c39829d89
+    type: core.RuleEnablementAction

@@ -1,0 +1,54 @@
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      cronExpression: "* * * * * ? *"
+    type: timer.GenericCronTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      blockSource: <xml xmlns="https://developers.google.com/blockly/xml"><block
+        type="controls_if" id="{Baf7m$Ic(Y^)`o%s~WW" x="68" y="163"><mutation
+        else="1"></mutation><value name="IF0"><block type="logic_operation"
+        id=":?zzWwg#1)jIT%HM~!ps"><field name="OP">AND</field><value
+        name="A"><block type="logic_compare" id="-E_mW+tXut#;-/EL$uy-"><field
+        name="OP">GT</field><value name="A"><block type="oh_getitem_state"
+        id="m6g$-kywIRG@uY!TzTS!"><value name="itemName"><shadow type="oh_item"
+        id="a^%d#{t:Og?{olg{U{DC"><field
+        name="itemName">Balkon_Kraftwerk_ShellyKanal1_Stromverbrauch1</field></shadow></value></block></value><value
+        name="B"><block type="oh_getitem_state" id="nI55$|R{CzlSKc823mBa"><value
+        name="itemName"><shadow type="oh_item" id="t0+;O-JSaul/-V6useJ#"><field
+        name="itemName">Hobbyraum_Infrarotheizung_Wattabfrage</field></shadow></value></block></value></block></value><value
+        name="B"><block type="logic_compare" id="=-,rDD]6s#hl*%*XrvSL"><field
+        name="OP">EQ</field><value name="A"><block type="oh_getitem_state"
+        id="91C2?|XVo7=E8oN;6/D4"><value name="itemName"><shadow type="oh_item"
+        id="?[zH*x6p^~%9`|o$@dt*"><field
+        name="itemName">Schalter</field></shadow></value></block></value><value
+        name="B"><block type="text" id="bj%BJPFt|{=*!a}k2Ked"><field
+        name="TEXT">OFF</field></block></value></block></value></block></value><statement
+        name="DO0"><block type="oh_event" id=":(ha4hGy]KGcMHN@jB|O"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="GeF_:8mu/7)*HP2B;:;S"><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="C*~d#k2Yg`yMG!mv6UQ^"><field
+        name="itemName">Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2</field></shadow></value></block></statement><statement
+        name="ELSE"><block type="oh_event" id=":S@qj[roU9=$W`b][Ekx"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="m,!xD?5McwWRjJob4^Ai"><field
+        name="TEXT">OFF</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="Uw-2Q~.u:6807mjGb-hO"><field
+        name="itemName">Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2</field></shadow></value></block></statement></block></xml>
+      type: application/javascript
+      script: >
+        if
+        (itemRegistry.getItem('Balkon_Kraftwerk_ShellyKanal1_Stromverbrauch1').getState()
+        >
+        itemRegistry.getItem('Hobbyraum_Infrarotheizung_Wattabfrage').getState()
+        && itemRegistry.getItem('Schalter').getState() == 'OFF') {
+          events.sendCommand('Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2', 'ON');
+        } else {
+          events.sendCommand('Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2', 'OFF');
+        }
+    type: script.ScriptAction

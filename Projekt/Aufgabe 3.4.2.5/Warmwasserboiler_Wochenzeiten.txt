@@ -1,0 +1,495 @@
+configuration: {}
+triggers:
+  - id: "2"
+    configuration:
+      cronExpression: 0/10 * * * * ? *
+    type: timer.GenericCronTrigger
+conditions:
+  - inputs: {}
+    id: "3"
+    configuration:
+      itemName: Warmwasserboiler_Schalter_Optionen
+      state: "2"
+      operator: =
+    type: core.ItemStateCondition
+actions:
+  - inputs: {}
+    id: "1"
+    configuration:
+      blockSource: <xml xmlns="https://developers.google.com/blockly/xml"><block
+        type="controls_if" id="%y2]Mg0V^vc-fGIjF.g4" x="57" y="84"><mutation
+        elseif="6" else="1"></mutation><value name="IF0"><block
+        type="logic_operation" id=",ea:kmKjnOiSw#;~,:a3"><field
+        name="OP">AND</field><value name="A"><block type="logic_operation"
+        id="bta?hL]sX2`$mo[YwTMi"><field name="OP">AND</field><value
+        name="A"><block type="oh_ephemeris_check"
+        id="=i:/9HOrqEP[;fj1R!FR"><field name="checkType">weekday</field><value
+        name="dayInfo"><shadow type="oh_dayoffset_today"
+        id="rRN$5!9y57wUTOf^)iXI"></shadow></value></block></value><value
+        name="B"><block type="oh_zdt_between" id="A1Dd?Ne(sF/HEAvyGDbK"><field
+        name="dateComparison">time</field><value name="zdtOne"><shadow
+        type="oh_zdt" id="NZrS+l)d4C5@Elv-cR|g"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_now"
+        id="2/}3ee^heBh]gYj!FQ00"></block></value><value name="zdtTwo"><shadow
+        type="oh_zdt" id="HSa!gs.1^ieJ}M`nqSd@"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="eB-rzXlukHNe1!W=7Q^g"><value name="itemName"><shadow type="oh_item"
+        id="F)mA0MK}HlNc2L:6Ln.N"><field
+        name="itemName">Warmwasserboiler_Zeit1_von</field></shadow></value></block></value><value
+        name="zdtThree"><shadow type="oh_zdt" id="vxY)3qDYr|fC|696PHiQ"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="6u9jC[fN|);P_v-](UvC"><value name="itemName"><shadow type="oh_item"
+        id="zUoQ%N%%VzzE;$nY]/)6"><field
+        name="itemName">Warmwasserboiler_Zeit1_bis</field></shadow></value></block></value></block></value></block></value><value
+        name="B"><block type="logic_operation" id="ZRl[?%wDnJm=rHs|yp]E"><field
+        name="OP">OR</field><value name="A"><block type="logic_compare"
+        id="?jw9I7-92g}a@0;N:Gg3"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id=")y984/n`3LDOo/To)5e!"><value
+        name="itemName"><shadow type="oh_item" id="WVo8*f[_VoErFVOKw[VL"><field
+        name="itemName">Warmwasserboiler_Zeit1_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="(u.G`*yfm#{EZYXpU0;W"><field
+        name="TEXT">guenstig</field></block></value></block></value><value
+        name="B"><block type="logic_operation" id="9LoVhnO|QGyRGphektVb"><field
+        name="OP">AND</field><value name="A"><block type="logic_compare"
+        id="ZHdzC[D%q}*AE-Y@TQat"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="L%MPmB9X55!IEcd(]5=v"><value
+        name="itemName"><shadow type="oh_item" id="YJTT-!$0/5:J3WWda5En"><field
+        name="itemName">Warmwasserboiler_AN_mittel</field></shadow></value></block></value><value
+        name="B"><block type="text" id="r*iJtD+Omu.#wh{(SD$|"><field
+        name="TEXT">ON</field></block></value></block></value><value
+        name="B"><block type="logic_compare" id="nZT}C4J(#[]]3q*NuU=i"><field
+        name="OP">EQ</field><value name="A"><block type="oh_getitem_state"
+        id=",xJ(tiLdg5=:;1$0KUq8"><value name="itemName"><shadow type="oh_item"
+        id="-hD94oW|3wP[$eF@!sV`"><field
+        name="itemName">Warmwasserboiler_Zeit1_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="0|Yfd^OsLSas((NeVQw]"><field
+        name="TEXT">mittel</field></block></value></block></value></block></value></block></value></block></value><statement
+        name="DO0"><block type="oh_event" id="t]a{k10*=#PFXIZ+7398"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="M1p~h`Wjt0GbT+hvfthB"><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="=-XV2xv[gMlSTDLsO6i!"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></statement><value
+        name="IF1"><block type="logic_operation"
+        id="h9;j52EN0j*9`t%%M21|"><field name="OP">AND</field><value
+        name="A"><block type="logic_operation" id="w~lRs%ci]FbyPjK.UmO}"><field
+        name="OP">AND</field><value name="A"><block type="oh_ephemeris_check"
+        id="1Mu)WhKX=/arpY|vocJ~"><field name="checkType">weekday</field><value
+        name="dayInfo"><shadow type="oh_dayoffset_today"
+        id="KS6SM73k@8kh{ZqY{QCL"></shadow></value></block></value><value
+        name="B"><block type="oh_zdt_between" id="T.@V:+zh-`EMC_(ag%*r"><field
+        name="dateComparison">time</field><value name="zdtOne"><shadow
+        type="oh_zdt"><field name="day">2023-01-13</field></shadow><block
+        type="oh_zdt_now" id="n!ampM,a`*cCcKgtl%u5"></block></value><value
+        name="zdtTwo"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id=",uW2]MO/r~XEuXnojG%M"><value name="itemName"><shadow type="oh_item"
+        id="@A{B4nYh=O_!(62E[kxH"><field
+        name="itemName">Warmwasserboiler_Zeit2_von</field></shadow></value></block></value><value
+        name="zdtThree"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="YpGipBQ(b}=L8Wah3i7F"><value name="itemName"><shadow type="oh_item"
+        id="Z~F]4j+z[Py-@W;wh0xD"><field
+        name="itemName">Warmwasserboiler_Zeit2_bis</field></shadow></value></block></value></block></value></block></value><value
+        name="B"><block type="logic_operation" id="vCNY9S0GtL={=V=nas)l"><field
+        name="OP">OR</field><value name="A"><block type="logic_compare"
+        id="FsKyd)*}XT/!+aoiQmB0"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="WK1Zm5},G^`:V_)~P?BJ"><value
+        name="itemName"><shadow type="oh_item" id="N!}6T6-}VO?5{s(9y.qE"><field
+        name="itemName">Warmwasserboiler_Zeit2_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="li$E,:DGAZQ=vSIPNZJV"><field
+        name="TEXT">guenstig</field></block></value></block></value><value
+        name="B"><block type="logic_operation" id=";(2xA(_sc{u6)uH051uK"><field
+        name="OP">AND</field><value name="A"><block type="logic_compare"
+        id="@ZfqOD9T2p*:i~)ZX8pb"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="WsF%!@YmE^X=?i|HW.og"><value
+        name="itemName"><shadow type="oh_item" id="*5f1C${=*zji#+Jqc?|W"><field
+        name="itemName">Warmwasserboiler_AN_mittel</field></shadow></value></block></value><value
+        name="B"><block type="text" id="i(CbFvC9.*as[v0oJz,~"><field
+        name="TEXT">ON</field></block></value></block></value><value
+        name="B"><block type="logic_compare" id="?o}?PEvgh-BhG5*p_7)6"><field
+        name="OP">EQ</field><value name="A"><block type="oh_getitem_state"
+        id="^a9[)Rg1tKy-Y2(Z^`6b"><value name="itemName"><shadow type="oh_item"
+        id="jqiiD%,dEGbCMRvD(yJo"><field
+        name="itemName">Warmwasserboiler_Zeit2_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="FF`PZxfB!5HW}+e^c-U{"><field
+        name="TEXT">mittel</field></block></value></block></value></block></value></block></value></block></value><statement
+        name="DO1"><block type="oh_event" id="_h9Y!c(J|o:MTYz[y/OB"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="X`[Sb;B_N,lJne7.|~U:"><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="NwE)8IQDt*i)06l.hs[*"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></statement><value
+        name="IF2"><block type="logic_operation"
+        id="z?zRaHo[eqrRzV{21!bm"><field name="OP">AND</field><value
+        name="A"><block type="logic_operation" id="aJ?Auq.za;r-d.T|OzU%"><field
+        name="OP">AND</field><value name="A"><block type="oh_ephemeris_check"
+        id="nsOabZ#*xP0H*N*5V1_U"><field name="checkType">weekday</field><value
+        name="dayInfo"><shadow type="oh_dayoffset_today"
+        id="d1gq0`?x^L$ob}@Tk~hz"></shadow></value></block></value><value
+        name="B"><block type="oh_zdt_between" id=";wX8|mRZ[/EOC$HFEsvI"><field
+        name="dateComparison">time</field><value name="zdtOne"><shadow
+        type="oh_zdt"><field name="day">2023-01-13</field></shadow><block
+        type="oh_zdt_now" id="5*$n|q]{_170v++6{NYU"></block></value><value
+        name="zdtTwo"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="Zdp+zHHFv+)x:Ie:gkRT"><value name="itemName"><shadow type="oh_item"
+        id="/CJdmK{vzrN*^}ZHVCAE"><field
+        name="itemName">Warmwasserboiler_Zeit3_von</field></shadow></value></block></value><value
+        name="zdtThree"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="8]#i4qc-yZz,vN3qTZer"><value name="itemName"><shadow type="oh_item"
+        id="h9DtTl(gfs9tJw/0i:Ea"><field
+        name="itemName">Warmwasserboiler_Zeit3_bis</field></shadow></value></block></value></block></value></block></value><value
+        name="B"><block type="logic_operation" id="D0gTkXh`GM9Vcl_x@3Em"><field
+        name="OP">OR</field><value name="A"><block type="logic_compare"
+        id="WvqR,2|;a|MUI:pQ7#;0"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id=",DQIiD(HB,cNqasHym`h"><value
+        name="itemName"><shadow type="oh_item" id="vltvgyf*{#LK{M$2_*{n"><field
+        name="itemName">Warmwasserboiler_Zeit3_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="p7(f|t/*cCYfzA2`0%NQ"><field
+        name="TEXT">guenstig</field></block></value></block></value><value
+        name="B"><block type="logic_operation" id="/,!4w(T~cj!P9;f?aPd;"><field
+        name="OP">AND</field><value name="A"><block type="logic_compare"
+        id="4ek8@q0feywrgTvnnceu"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="tX}F-tbtp6Ypf^OyKm~("><value
+        name="itemName"><shadow type="oh_item" id="w+(P%?Kg!4hhU3C%^hi^"><field
+        name="itemName">Warmwasserboiler_AN_mittel</field></shadow></value></block></value><value
+        name="B"><block type="text" id="dAoKQ[kli3-~zvp[A~(%"><field
+        name="TEXT">ON</field></block></value></block></value><value
+        name="B"><block type="logic_compare" id="U+~Qjk`WqR{!b$yhE8Ue"><field
+        name="OP">EQ</field><value name="A"><block type="oh_getitem_state"
+        id="GqLXPcdOZzCBSfN9-dte"><value name="itemName"><shadow type="oh_item"
+        id="_SiGNUvOuL+J)|Yg3-yH"><field
+        name="itemName">Warmwasserboiler_Zeit3_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="Dyh9O0Bh|PpqI9{%!RGm"><field
+        name="TEXT">mittel</field></block></value></block></value></block></value></block></value></block></value><statement
+        name="DO2"><block type="oh_event" id="|{4498UyA+@]8`jPslUD"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="!.7XCE,}-6[*:+B?PGKN"><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id=":?OT9{PC[|)_%*D2rW3r"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></statement><value
+        name="IF3"><block type="logic_operation"
+        id="grg4Xn3feUtE^)?BIFMW"><field name="OP">AND</field><value
+        name="A"><block type="logic_operation" id="U-hCkO3heU:*PtK**0Q2"><field
+        name="OP">AND</field><value name="A"><block type="oh_ephemeris_check"
+        id="|,RU=As[@![$6D6@PSHD"><field name="checkType">weekday</field><value
+        name="dayInfo"><shadow type="oh_dayoffset_today"
+        id="Q9)7EtT^Q+9vFgA~y?Zp"></shadow></value></block></value><value
+        name="B"><block type="oh_zdt_between" id="3ud6ityTnR2x[$!t69wK"><field
+        name="dateComparison">time</field><value name="zdtOne"><shadow
+        type="oh_zdt"><field name="day">2023-01-13</field></shadow><block
+        type="oh_zdt_now" id="#ATg_,S3L`|30[d08]@i"></block></value><value
+        name="zdtTwo"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="5N2nINu@^yuGE172o4-y"><value name="itemName"><shadow type="oh_item"
+        id="y#oCa)XlYhS^@CX.oA}."><field
+        name="itemName">Warmwasserboiler_Zeit4_von</field></shadow></value></block></value><value
+        name="zdtThree"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="#uK#Ejd]iGexBgx7JO;{"><value name="itemName"><shadow type="oh_item"
+        id="C_zeNFfu`NkODcuE;|s;"><field
+        name="itemName">Warmwasserboiler_Zeit4_bis</field></shadow></value></block></value></block></value></block></value><value
+        name="B"><block type="logic_operation" id="8WnTKO?-lBw:2=X6e;Ui"><field
+        name="OP">OR</field><value name="A"><block type="logic_compare"
+        id="zo6GGmC!O}#n1w!z18D_"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id=")@4iz/Cxfic}lj:%VOl5"><value
+        name="itemName"><shadow type="oh_item" id="W?/dH^`@j~`GQk}.i/qP"><field
+        name="itemName">Warmwasserboiler_Zeit4_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="4O[JyJb^1!S)zo6J|3y;"><field
+        name="TEXT">guenstig</field></block></value></block></value><value
+        name="B"><block type="logic_operation" id="|[W9#IDU!YZ7,Kc+##v)"><field
+        name="OP">AND</field><value name="A"><block type="logic_compare"
+        id="!WJb9}pWcplEpwx)8|-e"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="Mcm~DLd2z#[5{nX_)1f%"><value
+        name="itemName"><shadow type="oh_item" id="pS[7Aoe+|^]6%1y5WGbr"><field
+        name="itemName">Warmwasserboiler_AN_mittel</field></shadow></value></block></value><value
+        name="B"><block type="text" id="@^`Znc-o!JmkYP^YMF%t"><field
+        name="TEXT">ON</field></block></value></block></value><value
+        name="B"><block type="logic_compare" id="*|AZ]39rft[{g7bt(s=o"><field
+        name="OP">EQ</field><value name="A"><block type="oh_getitem_state"
+        id="fvu*D,:}Bi,DSP`2VwZ_"><value name="itemName"><shadow type="oh_item"
+        id="iDHm3v@$OdRBgxGqeK=N"><field
+        name="itemName">Warmwasserboiler_Zeit4_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="P??36,Zf,L,(1E]yPz@c"><field
+        name="TEXT">mittel</field></block></value></block></value></block></value></block></value></block></value><statement
+        name="DO3"><block type="oh_event" id="Es_GZ.NaDQha2H.|(ByB"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="0c%TKd47Ztj+_BsPJ]wn"><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="]V:tPCd{,d{gPa-mT9Bq"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></statement><value
+        name="IF4"><block type="logic_operation"
+        id="@59?b93ANvu|$$c-?LlV"><field name="OP">AND</field><value
+        name="A"><block type="logic_operation" id="BHEV@6|udA3*D1lW.n)`"><field
+        name="OP">AND</field><value name="A"><block type="oh_ephemeris_check"
+        id="qe?$N.WF=d^}{i,ft~?."><field name="checkType">weekday</field><value
+        name="dayInfo"><shadow type="oh_dayoffset_today"
+        id="znu-Tu*K)aQV;{Ptv`IW"></shadow></value></block></value><value
+        name="B"><block type="oh_zdt_between" id="Ayz.0oD:N?t|2T}b9?wy"><field
+        name="dateComparison">time</field><value name="zdtOne"><shadow
+        type="oh_zdt"><field name="day">2023-01-13</field></shadow><block
+        type="oh_zdt_now" id="salj2E:sB:]57_a*Z%6U"></block></value><value
+        name="zdtTwo"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="{tpn$?$li^umH@CQAiuj"><value name="itemName"><shadow type="oh_item"
+        id="4nDv2e@a}vY%;VSvmj1v"><field
+        name="itemName">Warmwasserboiler_Zeit5_von</field></shadow></value></block></value><value
+        name="zdtThree"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="]`cZ1%%nTErt^#!OGi(!"><value name="itemName"><shadow type="oh_item"
+        id="_T4jBxB~vr)LcTtKGy5Z"><field
+        name="itemName">Warmwasserboiler_Zeit5_bis</field></shadow></value></block></value></block></value></block></value><value
+        name="B"><block type="logic_operation" id="FQCyOJ7$3S2Hh-Cj]qut"><field
+        name="OP">OR</field><value name="A"><block type="logic_compare"
+        id="GkcnMIVRX,dw]!Q6huCu"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="SHqA3xh|3b4J%*nfE)d~"><value
+        name="itemName"><shadow type="oh_item" id="2ZB|hkMq9qd8H%F-^JgG"><field
+        name="itemName">Warmwasserboiler_Zeit5_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="]|^D*i*xtA)t^s`k)~rV"><field
+        name="TEXT">guenstig</field></block></value></block></value><value
+        name="B"><block type="logic_operation" id="yC%`%Mp9L8:owHP_|mF;"><field
+        name="OP">AND</field><value name="A"><block type="logic_compare"
+        id="8NTh|(baJR#,dPL]@Vj6"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="I#8gFZlsr.-@594ZiZ6`"><value
+        name="itemName"><shadow type="oh_item" id="w9ZC=Bk!{XVIvs}0m9dx"><field
+        name="itemName">Warmwasserboiler_AN_mittel</field></shadow></value></block></value><value
+        name="B"><block type="text" id="!2ASstiUs_c;*kcew?k^"><field
+        name="TEXT">ON</field></block></value></block></value><value
+        name="B"><block type="logic_compare" id="Tb[:2-B7[nY3N(dnIuft"><field
+        name="OP">EQ</field><value name="A"><block type="oh_getitem_state"
+        id="dL{T_s+e$^M#79aT,TUg"><value name="itemName"><shadow type="oh_item"
+        id=")w},sGb0*%q2,pCti~1a"><field
+        name="itemName">Warmwasserboiler_Zeit5_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="88_Jd3i6E5[LDq2]HNUW"><field
+        name="TEXT">mittel</field></block></value></block></value></block></value></block></value></block></value><statement
+        name="DO4"><block type="oh_event" id="J+/%^dY@dL(TzSR{`_kQ"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="JX_$!p}Xvf3o?vlEc8.}"><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="trgZ!{YrfSM1Vl*_?h}/"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></statement><value
+        name="IF5"><block type="logic_operation"
+        id="Y9@II7fMnv.mwe5A+r:j"><field name="OP">AND</field><value
+        name="A"><block type="logic_operation" id="1uQf6k(@mUt8jj10uTO5"><field
+        name="OP">AND</field><value name="A"><block type="oh_ephemeris_check"
+        id="y%!=:eiHP6}566I+qMep"><field name="checkType">weekday</field><value
+        name="dayInfo"><shadow type="oh_dayoffset_today"
+        id="vw!@n/MSJze%[`^.G6_B"></shadow></value></block></value><value
+        name="B"><block type="oh_zdt_between" id="3@tm|LHOL5%S}|(MkKTG"><field
+        name="dateComparison">time</field><value name="zdtOne"><shadow
+        type="oh_zdt"><field name="day">2023-01-13</field></shadow><block
+        type="oh_zdt_now" id="%^3cV;7|xx{7nJE*bbID"></block></value><value
+        name="zdtTwo"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="CYZd!cn}E%S;IJYiCG94"><value name="itemName"><shadow type="oh_item"
+        id="9SRe^47v+w93@p?_2/ow"><field
+        name="itemName">Warmwasserboiler_Zeit6_von</field></shadow></value></block></value><value
+        name="zdtThree"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="@sX_7R4^y.%bo:xWCAr0"><value name="itemName"><shadow type="oh_item"
+        id="F@7soT)1i}Xz3A2l!K$r"><field
+        name="itemName">Warmwasserboiler_Zeit6_bis</field></shadow></value></block></value></block></value></block></value><value
+        name="B"><block type="logic_operation" id="aBoDihZ8R{=TXM+iw!9O"><field
+        name="OP">OR</field><value name="A"><block type="logic_compare"
+        id="_L0?`GOv9`9_FY(NeI2@"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="c1exEjw*E!C]b^x4UI@!"><value
+        name="itemName"><shadow type="oh_item" id="pnMYY-r6Ew%nMkto]/[["><field
+        name="itemName">Warmwasserboiler_Zeit6_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="|#^UtzDNM.?QER7!v^}s"><field
+        name="TEXT">guenstig</field></block></value></block></value><value
+        name="B"><block type="logic_operation" id="^|mBgL,=X]GfQBWW@xT|"><field
+        name="OP">AND</field><value name="A"><block type="logic_compare"
+        id="HIp8NKSKbEK+q|e5(nRz"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="}W,D)EdJ(X{g7=E@W|WW"><value
+        name="itemName"><shadow type="oh_item" id="nH0Q8)4*-/!nly@p$urC"><field
+        name="itemName">Warmwasserboiler_AN_mittel</field></shadow></value></block></value><value
+        name="B"><block type="text" id="uhBss:GI@]LKWEw5wjyF"><field
+        name="TEXT">ON</field></block></value></block></value><value
+        name="B"><block type="logic_compare" id="p;|s[+-uq:W?m9ae1n.i"><field
+        name="OP">EQ</field><value name="A"><block type="oh_getitem_state"
+        id="yya~FTxlmq]ic@#8e1{-"><value name="itemName"><shadow type="oh_item"
+        id=":O#j*X//kF61Bo?rsY}S"><field
+        name="itemName">Warmwasserboiler_Zeit6_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="`hOmuPUE;?ZNHf|H{Ym;"><field
+        name="TEXT">mittel</field></block></value></block></value></block></value></block></value></block></value><statement
+        name="DO5"><block type="oh_event" id=";bv-;::J[Q6X4mMOHPej"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="re{tmPCQou#DK4]Y!y(1"><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="0hRnUCfC#AKiy;.SP=/P"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></statement><value
+        name="IF6"><block type="logic_operation"
+        id="*6e]v4KiD1B]3U4#gmk*"><field name="OP">AND</field><value
+        name="A"><block type="logic_operation" id="w=|.%j]V}:6lREETrhV`"><field
+        name="OP">AND</field><value name="A"><block type="oh_ephemeris_check"
+        id="p)VyEGv/EQu+fscVVQ9:"><field name="checkType">weekend</field><value
+        name="dayInfo"><shadow type="oh_dayoffset_today"
+        id="$9TvB(;9$0v!9:S%G#~s"></shadow></value></block></value><value
+        name="B"><block type="oh_zdt_between" id="u-OEfS|Ds0~aTRN}uEm+"><field
+        name="dateComparison">time</field><value name="zdtOne"><shadow
+        type="oh_zdt"><field name="day">2023-01-13</field></shadow><block
+        type="oh_zdt_now" id="TA.wGa={+.Tn9Wp_-;/Y"></block></value><value
+        name="zdtTwo"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="-:%$L*ZQ#}g{kQ{-8E/Z"><value name="itemName"><shadow type="oh_item"
+        id="5yOr*FLDVl#P*u7;r.23"><field
+        name="itemName">Warmwasserboiler_ZeitWE_von</field></shadow></value></block></value><value
+        name="zdtThree"><shadow type="oh_zdt"><field
+        name="day">2023-01-13</field></shadow><block type="oh_zdt_fromItem"
+        id="QRe_nrqUX685(-Pu@n-l"><value name="itemName"><shadow type="oh_item"
+        id="Z5P`la]y:`|TyT6}*{{`"><field
+        name="itemName">Warmwasserboiler_ZeitWE_bis</field></shadow></value></block></value></block></value></block></value><value
+        name="B"><block type="logic_operation" id="L|y6DhnIAQCnIJ/+VUnN"><field
+        name="OP">OR</field><value name="A"><block type="logic_compare"
+        id="~N2I[rc6+js#=R{ZL_zI"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="mR^$WKgV#{{%^sHs=*Tg"><value
+        name="itemName"><shadow type="oh_item" id="D$#j6E8K#x=St[VnVMdL"><field
+        name="itemName">Warmwasserboiler_ZeitWE_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id=".m7SvP+8K{kR^]tQuoih"><field
+        name="TEXT">guenstig</field></block></value></block></value><value
+        name="B"><block type="logic_operation" id="[vy_+SWyy!!2bDEHWZ8y"><field
+        name="OP">AND</field><value name="A"><block type="logic_compare"
+        id="7L!uOyWEA9Wm84wh;l%-"><field name="OP">EQ</field><value
+        name="A"><block type="oh_getitem_state" id="](7cO2(5vFgRE3A5,f3u"><value
+        name="itemName"><shadow type="oh_item" id="zNU5mUvFQu#0+SV@}2Ji"><field
+        name="itemName">Warmwasserboiler_AN_mittel</field></shadow></value></block></value><value
+        name="B"><block type="text" id="-(1j*3hu~Z5I{u]-GEA|"><field
+        name="TEXT">ON</field></block></value></block></value><value
+        name="B"><block type="logic_compare" id="=DGgfo[qm_cP3wP#r4j@"><field
+        name="OP">EQ</field><value name="A"><block type="oh_getitem_state"
+        id="t6yC]e1Aa^pXKfd)P?_M"><value name="itemName"><shadow type="oh_item"
+        id="p^z=;^j`6?*Y~X_u65Kh"><field
+        name="itemName">Warmwasserboiler_ZeitWE_Preis</field></shadow></value></block></value><value
+        name="B"><block type="text" id="sPnOvrzgu;5Na}!.pCe7"><field
+        name="TEXT">mittel</field></block></value></block></value></block></value></block></value></block></value><statement
+        name="DO6"><block type="oh_event" id="HzID129y}qsABrcXaukh"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="}E1[D6%vgPIf]Q=rJ}c4"><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id=".8gLE01G07X*r5@9@!r$"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></statement><statement
+        name="ELSE"><block type="oh_event" id="zY%;]s1IU{6O,9xF{9+X"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="dLLOs9zMI)^#s?#qFT*3"><field
+        name="TEXT">OFF</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="xO$J=KfY1eXhWy^AwhLB"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></statement></block></xml>
+      type: application/javascript
+      script: >
+        var ephemeris =
+        Java.type("org.openhab.core.model.script.actions.Ephemeris");
+
+
+        function zdtCompare(zdt1, zdt2, compareOp, precision, compDate) {
+          switch (precision) {
+            case 'years':
+             zdt2 = zdt2.withMonth(zdt1.getMonthValue());
+            case 'months':
+             zdt2 = zdt2.withDayOfMonth(zdt1.getDayOfMonth());
+            case 'days':
+             zdt2 = zdt2.withHour(zdt1.getHour());
+            case 'hours':
+             zdt2 = zdt2.withMinute(zdt1.getMinute());
+            case 'minutes':
+             zdt2 = zdt2.withSecond(zdt1.getSecond());
+            case 'seconds':
+             zdt2 = zdt2.withNano(zdt1.getNano());
+          }
+          if (compDate === 'date') {
+            zdt1 = zdt1.toLocalDate();
+            zdt2 = zdt2.toLocalDate();
+          } else if (compDate === 'time') {
+            zdt1 = zdt1.toLocalTime();
+            zdt2 = zdt2.toLocalTime();
+          }
+          switch (compareOp) {
+            case 'before':
+              return zdt1.isBefore(zdt2);
+            case 'equal':
+              return zdt1.equals(zdt2);
+            case 'after':
+              return zdt1.isAfter(zdt2);
+            case 'beforeEqual':
+              return zdt1.isBefore(zdt2) || zdt1.equals(zdt2);
+            case 'afterEqual':
+              return zdt1.isAfter(zdt2) || zdt1.equals(zdt2);
+          }
+        }
+
+
+        var dtf = Java.type("java.time.format.DateTimeFormatter");
+
+
+        var zdt = Java.type("java.time.ZonedDateTime");
+
+
+        function getZonedDateTime(datetime) {
+          datetime = String(datetime).replace('T', ' ')
+          var regex_time_min =         /^\d{2}:\d{2}$/;
+          var regex_time_sec =         /^\d{2}:\d{2}:\d{2}$/;
+          var regex_date =             /^\d{4}-\d{2}-\d{2}$/;
+          var regex_date_time_min =    /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/;
+          var regex_date_time_sec =    /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/;
+          var regex_date_time_sec_tz = /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$/;
+          var regex_date_time_ms =     /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}\.\d{3}$/;
+          var regex_date_time_us =     /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}\.\d{6}$/;
+          var regex_date_time_ms_tz =  /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}\.\d{3}[+-]\d{2}:\d{2}$/;
+          var regex_date_time_us_tz =  /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}\.\d{6}[+-]\d{2}:\d{2}$/;
+          var regex_oh =               /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}\.\d{3}[+-]\d{4}$/;
+          var now = zdt.now();
+          var now_year = now.getYear();
+          var now_month = now.getMonthValue();
+          var now_day = now.getDayOfMonth();
+          var today = '' + now_year;
+          today += '-' + ('0' + now_month).slice(-2);
+          today += '-' + ('0' + now_day).slice(-2)+' ';
+          switch (true) {
+            case regex_time_min.test(datetime): return zdt.parse(today + datetime + ':00+00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_time_sec.test(datetime): return zdt.parse(today + datetime + '+00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_date.test(datetime): return zdt.parse(datetime + ' 00:00:00+00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_date_time_min.test(datetime): return zdt.parse(datetime + ':00+00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_date_time_sec.test(datetime): return zdt.parse(datetime + '+00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_date_time_sec_tz.test(datetime): return zdt.parse(datetime, dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_date_time_ms.test(datetime): return zdt.parse(datetime + ' +00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ss.SSS z'));
+            case regex_date_time_us.test(datetime): return zdt.parse(datetime + ' +00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ss.SSSSSS z'));
+            case regex_date_time_ms_tz.test(datetime): return zdt.parse(datetime, dtf.ofPattern('yyyy-MM-dd HH:mm:ss.SSSSz'));
+            case regex_date_time_us_tz.test(datetime): return zdt.parse(datetime, dtf.ofPattern('yyyy-MM-dd HH:mm:ss.SSSSSSSz'));
+            case regex_oh.test(datetime): return zdt.parse(datetime.slice(0,26) + ':' + datetime.slice(26,28), dtf.ofPattern('yyyy-MM-dd HH:mm:ss.SSSSz'));
+            default: return zdt.parse(datetime);
+          }
+        }
+
+
+        function createZonedDateTime(year, month, day, hour, minute, second, nano, offsetString, timezoneString) {
+          stringToParse = '' + year;
+          stringToParse += '-' + ('0' + month).slice(-2);
+          stringToParse += '-' + ('0' + day).slice(-2);
+          stringToParse += 'T' + ('0' + hour).slice(-2);
+          stringToParse += ':' + ('0' + minute).slice(-2);
+          stringToParse += ':' + ('0' + second).slice(-2);
+          stringToParse += '.' + nano + offsetString + '[' + timezoneString + ']';
+          return zdt.parse(stringToParse, dtf.ISO_ZONED_DATE_TIME);
+        }
+
+
+
+        if (!ephemeris.isWeekend(0) && ((zdtCompare((itemRegistry.getItem('Warmwasserboiler_Zeit1_von').getState().getZonedDateTime()), (zdt.now()), 'beforeEqual', 'nanos', 'time') && zdtCompare((zdt.now()), (itemRegistry.getItem('Warmwasserboiler_Zeit1_bis').getState().getZonedDateTime()), 'beforeEqual', 'nanos', 'time'))) && (itemRegistry.getItem('Warmwasserboiler_Zeit1_Preis').getState() == 'guenstig' || itemRegistry.getItem('Warmwasserboiler_AN_mittel').getState() == 'ON' && itemRegistry.getItem('Warmwasserboiler_Zeit1_Preis').getState() == 'mittel')) {
+          events.sendCommand('Warmwasserboiler', 'ON');
+        } else if (!ephemeris.isWeekend(0) && ((zdtCompare((itemRegistry.getItem('Warmwasserboiler_Zeit2_von').getState().getZonedDateTime()), (zdt.now()), 'beforeEqual', 'nanos', 'time') && zdtCompare((zdt.now()), (itemRegistry.getItem('Warmwasserboiler_Zeit2_bis').getState().getZonedDateTime()), 'beforeEqual', 'nanos', 'time'))) && (itemRegistry.getItem('Warmwasserboiler_Zeit2_Preis').getState() == 'guenstig' || itemRegistry.getItem('Warmwasserboiler_AN_mittel').getState() == 'ON' && itemRegistry.getItem('Warmwasserboiler_Zeit2_Preis').getState() == 'mittel')) {
+          events.sendCommand('Warmwasserboiler', 'ON');
+        } else if (!ephemeris.isWeekend(0) && ((zdtCompare((itemRegistry.getItem('Warmwasserboiler_Zeit3_von').getState().getZonedDateTime()), (zdt.now()), 'beforeEqual', 'nanos', 'time') && zdtCompare((zdt.now()), (itemRegistry.getItem('Warmwasserboiler_Zeit3_bis').getState().getZonedDateTime()), 'beforeEqual', 'nanos', 'time'))) && (itemRegistry.getItem('Warmwasserboiler_Zeit3_Preis').getState() == 'guenstig' || itemRegistry.getItem('Warmwasserboiler_AN_mittel').getState() == 'ON' && itemRegistry.getItem('Warmwasserboiler_Zeit3_Preis').getState() == 'mittel')) {
+          events.sendCommand('Warmwasserboiler', 'ON');
+        } else if (!ephemeris.isWeekend(0) && ((zdtCompare((itemRegistry.getItem('Warmwasserboiler_Zeit4_von').getState().getZonedDateTime()), (zdt.now()), 'beforeEqual', 'nanos', 'time') && zdtCompare((zdt.now()), (itemRegistry.getItem('Warmwasserboiler_Zeit4_bis').getState().getZonedDateTime()), 'beforeEqual', 'nanos', 'time'))) && (itemRegistry.getItem('Warmwasserboiler_Zeit4_Preis').getState() == 'guenstig' || itemRegistry.getItem('Warmwasserboiler_AN_mittel').getState() == 'ON' && itemRegistry.getItem('Warmwasserboiler_Zeit4_Preis').getState() == 'mittel')) {
+          events.sendCommand('Warmwasserboiler', 'ON');
+        } else if (!ephemeris.isWeekend(0) && ((zdtCompare((itemRegistry.getItem('Warmwasserboiler_Zeit5_von').getState().getZonedDateTime()), (zdt.now()), 'beforeEqual', 'nanos', 'time') && zdtCompare((zdt.now()), (itemRegistry.getItem('Warmwasserboiler_Zeit5_bis').getState().getZonedDateTime()), 'beforeEqual', 'nanos', 'time'))) && (itemRegistry.getItem('Warmwasserboiler_Zeit5_Preis').getState() == 'guenstig' || itemRegistry.getItem('Warmwasserboiler_AN_mittel').getState() == 'ON' && itemRegistry.getItem('Warmwasserboiler_Zeit5_Preis').getState() == 'mittel')) {
+          events.sendCommand('Warmwasserboiler', 'ON');
+        } else if (!ephemeris.isWeekend(0) && ((zdtCompare((itemRegistry.getItem('Warmwasserboiler_Zeit6_von').getState().getZonedDateTime()), (zdt.now()), 'beforeEqual', 'nanos', 'time') && zdtCompare((zdt.now()), (itemRegistry.getItem('Warmwasserboiler_Zeit6_bis').getState().getZonedDateTime()), 'beforeEqual', 'nanos', 'time'))) && (itemRegistry.getItem('Warmwasserboiler_Zeit6_Preis').getState() == 'guenstig' || itemRegistry.getItem('Warmwasserboiler_AN_mittel').getState() == 'ON' && itemRegistry.getItem('Warmwasserboiler_Zeit6_Preis').getState() == 'mittel')) {
+          events.sendCommand('Warmwasserboiler', 'ON');
+        } else if (ephemeris.isWeekend(0) && ((zdtCompare((itemRegistry.getItem('Warmwasserboiler_ZeitWE_von').getState().getZonedDateTime()), (zdt.now()), 'beforeEqual', 'nanos', 'time') && zdtCompare((zdt.now()), (itemRegistry.getItem('Warmwasserboiler_ZeitWE_bis').getState().getZonedDateTime()), 'beforeEqual', 'nanos', 'time'))) && (itemRegistry.getItem('Warmwasserboiler_ZeitWE_Preis').getState() == 'guenstig' || itemRegistry.getItem('Warmwasserboiler_AN_mittel').getState() == 'ON' && itemRegistry.getItem('Warmwasserboiler_ZeitWE_Preis').getState() == 'mittel')) {
+          events.sendCommand('Warmwasserboiler', 'ON');
+        } else {
+          events.sendCommand('Warmwasserboiler', 'OFF');
+        }
+    type: script.ScriptAction

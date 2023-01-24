@@ -1,0 +1,180 @@
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      cronExpression: 0 * 8-20 * 9-5 ? *
+    type: timer.GenericCronTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      blockSource: <xml
+        xmlns="https://developers.google.com/blockly/xml"><variables><variable
+        id=".uCs]vr;f}qH^8:..gds">Boiler</variable><variable
+        id="!c5z$?h.+FI5D]y!VN)a">Infra</variable><variable
+        id="jP)##RI$Phc8|Q[P,@/h">summe</variable></variables><block
+        type="variables_set" id="J/dCf,1S{Zx.4@1~i2xw" x="142" y="75"><field
+        name="VAR" id=".uCs]vr;f}qH^8:..gds">Boiler</field><value
+        name="VALUE"><block type="oh_getitem_state"
+        id="KS@dI3@vngql?H)WpxP6"><value name="itemName"><shadow type="oh_item"
+        id="o3:M8,}kN/IGz^!s+Ntn"><field
+        name="itemName">WarmWasserboiler_Wattabfrage</field></shadow></value></block></value><next><block
+        type="variables_set" id=")KE5}*?+M/%X%#`htdBY"><field name="VAR"
+        id="!c5z$?h.+FI5D]y!VN)a">Infra</field><value name="VALUE"><block
+        type="oh_getitem_state" id="JW%hNp]_lV.[_[Si|_!O"><value
+        name="itemName"><shadow type="oh_item" id="p+rW9FE`+hfKAKTkme32"><field
+        name="itemName">Hobbyraum_Infrarotheizung_Wattabfrage</field></shadow></value></block></value><next><block
+        type="variables_set" id="kwjthigk|H4OFiM.7sFc"><field name="VAR"
+        id="jP)##RI$Phc8|Q[P,@/h">summe</field><value name="VALUE"><block
+        type="math_arithmetic" id="}40#rw3w.t60%q^:*}.v"><field
+        name="OP">ADD</field><value name="A"><shadow type="math_number"
+        id="$MQVLc_0Q^P)aDRUKJ_h"><field name="NUM">1</field></shadow><block
+        type="variables_get" id="z9,+f-JA6/XA9E5k-i[,"><field name="VAR"
+        id=".uCs]vr;f}qH^8:..gds">Boiler</field></block></value><value
+        name="B"><shadow type="math_number" id="b3UBlJ?Xg#;)wm:N%gQA"><field
+        name="NUM">1</field></shadow><block type="variables_get"
+        id="T~x9yOYKvmY=Z/c+K$-_"><field name="VAR"
+        id="!c5z$?h.+FI5D]y!VN)a">Infra</field></block></value></block></value><next><block
+        type="controls_if" id="9vR6a2Zc{D%3?G~}bx~@"><mutation elseif="2"
+        else="1"></mutation><value name="IF0"><block type="logic_operation"
+        id="p)Az(1hkA`~6x_l0U5R{"><field name="OP">AND</field><value
+        name="A"><block type="logic_compare" id="|6W}+E}DG`1M3ChEiE^]"><field
+        name="OP">GT</field><value name="A"><block type="oh_getitem_state"
+        id="aL/*/mo-s;*kM`[~):{6"><value name="itemName"><shadow type="oh_item"
+        id="#;xU1@/ps;0/F#WMmzq?"><field
+        name="itemName">Balkon_Kraftwerk_ShellyKanal1_Stromverbrauch1</field></shadow></value></block></value><value
+        name="B"><block type="variables_get" id="gAzpDm:wr|MF0gOqkTyZ"><field
+        name="VAR"
+        id="jP)##RI$Phc8|Q[P,@/h">summe</field></block></value></block></value><value
+        name="B"><block type="logic_compare" id="qMbdRX_Y6__fcv#Kt0lc"><field
+        name="OP">EQ</field><value name="A"><block type="oh_getitem_state"
+        id="_1ii$kq_rHCR!g8N]yzr"><value name="itemName"><shadow type="oh_item"
+        id="1)T,QVGy?diK!NDR6!$w"><field
+        name="itemName">Warmwasserboiler_Schalter_Optionen</field></shadow></value></block></value><value
+        name="B"><block type="text" id="{i~GX+2h_L-[6d4SzcDc"><field
+        name="TEXT">3</field></block></value></block></value></block></value><statement
+        name="DO0"><block type="oh_event" id="W(mlFo+F*(r:NqKq=l7P"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="5}?KFihMV5TdZdzBI=)_"><field
+        name="TEXT">value</field></shadow><block type="oh_getitem_state"
+        id="0h^Ey#-X:D:?/g.mD%cY"><value name="itemName"><shadow type="oh_item"
+        id="FwMAo*9Lk(]UPcC.-|3P"><field
+        name="itemName">Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2</field></shadow></value></block></value><value
+        name="itemName"><shadow type="oh_item" id="m_gITG#0;ustwrb`l$Y7"><field
+        name="itemName">MyItem</field></shadow><block type="text"
+        id="{sh,z2AedYRG9Ggt9jXH"><field
+        name="TEXT">ON</field></block></value><next><block type="oh_event"
+        id="izc~_5E.3d?sUbyllcE`"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="s/H|FUNZKtU;)NwAFtM$"><field
+        name="TEXT">value</field></shadow><block type="oh_getitem_state"
+        id="5!Fm^SfpFsN`iC*aZF1;"><value name="itemName"><shadow type="oh_item"
+        id="XBWGfeh2`~;%r}4pzaaW"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></value><value
+        name="itemName"><shadow type="oh_item"><field
+        name="itemName">MyItem</field></shadow><block type="text"
+        id="g:Q1}v!1(@:DS6~ne0jc"><field
+        name="TEXT">ON</field></block></value></block></next></block></statement><value
+        name="IF1"><block type="logic_compare" id="j,IOun];GPMSG!7$88et"><field
+        name="OP">GT</field><value name="A"><block type="oh_getitem_state"
+        id=".$oJ0i{lH?6hDN{df^:o"><value name="itemName"><shadow type="oh_item"
+        id="Ukl})GeJ3+!KUNmdGx+l"><field
+        name="itemName">Balkon_Kraftwerk_ShellyKanal1_Stromverbrauch1</field></shadow></value></block></value><value
+        name="B"><block type="variables_get" id="vci|dFo`LT`%9D@Q1?uY"><field
+        name="VAR"
+        id="!c5z$?h.+FI5D]y!VN)a">Infra</field></block></value></block></value><statement
+        name="DO1"><block type="oh_event" id="JqG1H^Bm`IAdsOlXw[GP"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text"><field name="TEXT">value</field></shadow><block
+        type="oh_getitem_state" id="x)2y9(;sOdbI]]^=[+f~"><value
+        name="itemName"><shadow type="oh_item" id="L=iQo{-2!k}z;2O#01`y"><field
+        name="itemName">Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2</field></shadow></value></block></value><value
+        name="itemName"><shadow type="oh_item"><field
+        name="itemName">MyItem</field></shadow><block type="text"
+        id="GaRV2P.LZBLM=qTTs.F6"><field
+        name="TEXT">ON</field></block></value><next><block type="oh_event"
+        id=",j01jtHBqLDklda}l)p5"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text"><field name="TEXT">value</field></shadow><block
+        type="oh_getitem_state" id="7v,Crcv/{r}1{3:N:!0m"><value
+        name="itemName"><shadow type="oh_item" id="X!WmA|]2?d}0-,G/=(*,"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></value><value
+        name="itemName"><shadow type="oh_item"><field
+        name="itemName">MyItem</field></shadow><block type="text"
+        id="ldoB?c7wakHgqfRv1X~E"><field
+        name="TEXT">OFF</field></block></value></block></next></block></statement><value
+        name="IF2"><block type="logic_compare" id="9gL9,4iMzK]U(zT{Z(~T"><field
+        name="OP">GT</field><value name="A"><block type="oh_getitem_state"
+        id="eggipy7d6z1~;!w}##]R"><value name="itemName"><shadow type="oh_item"
+        id="m:YJ[K)-eCvZ%a=gNTu:"><field
+        name="itemName">Balkon_Kraftwerk_ShellyKanal1_Stromverbrauch1</field></shadow></value></block></value><value
+        name="B"><block type="variables_get" id="h?@teD;54MXfDSxd~=0S"><field
+        name="VAR"
+        id="jP)##RI$Phc8|Q[P,@/h">summe</field></block></value></block></value><statement
+        name="DO2"><block type="oh_event" id="Wq:`#du+@K@APM~vI*2E"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text"><field name="TEXT">value</field></shadow><block
+        type="oh_getitem_state" id="J3Uhhy3_Qo?co_RYU{o3"><value
+        name="itemName"><shadow type="oh_item" id="1pxjglQ_E*T(`VQ/R!WT"><field
+        name="itemName">Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2</field></shadow></value></block></value><value
+        name="itemName"><shadow type="oh_item"><field
+        name="itemName">MyItem</field></shadow><block type="text"
+        id="A9=kiz:m=QX[Ws(|?0OZ"><field
+        name="TEXT">ON</field></block></value><next><block type="oh_event"
+        id="br^ID{YwXjKj.O%$a1[?"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text"><field name="TEXT">value</field></shadow><block
+        type="oh_getitem_state" id="yQPK#8uW5%8)`?gBH5?w"><value
+        name="itemName"><shadow type="oh_item" id="3L=E:-=EBZOEL8eIZ4uW"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></value><value
+        name="itemName"><shadow type="oh_item"><field
+        name="itemName">MyItem</field></shadow><block type="text"
+        id="%5j:dUBdVYP17ndWmnbW"><field
+        name="TEXT">OFF</field></block></value></block></next></block></statement><statement
+        name="ELSE"><block type="oh_event" id="O3B|$.w}(]wl-gV|8?,z"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text"><field name="TEXT">value</field></shadow><block
+        type="oh_getitem_state" id="smORx5Q5rW99HJHT(}D2"><value
+        name="itemName"><shadow type="oh_item" id="5x``,pgr8u{4#ynb$ZW;"><field
+        name="itemName">Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2</field></shadow></value></block></value><value
+        name="itemName"><shadow type="oh_item" id="C]dc$IV[A(t[vQ:jW(V2"><field
+        name="itemName">MyItem</field></shadow><block type="text"
+        id="c@PBv*hEJj_Z;dMrB@pF"><field
+        name="TEXT">OFF</field></block></value><next><block type="oh_event"
+        id=",,FzYyS~]$-b/]Jt(Nk]"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text"><field name="TEXT">value</field></shadow><block
+        type="oh_getitem_state" id="oU$k^,~g=xmDtlOzw_Q}"><value
+        name="itemName"><shadow type="oh_item" id="B1bM5,~vPsK{-WO)ih^7"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></value><value
+        name="itemName"><shadow type="oh_item"><field
+        name="itemName">MyItem</field></shadow><block type="text"
+        id=".%/B^D;`CWqvhFu#6Wfz"><field
+        name="TEXT">OFF</field></block></value></block></next></block></statement></block></next></block></next></block></next></block></xml>
+      type: application/javascript
+      script: >
+        var Boiler, Infra, summe;
+
+
+
+        Boiler = itemRegistry.getItem('WarmWasserboiler_Wattabfrage').getState();
+
+        Infra = itemRegistry.getItem('Hobbyraum_Infrarotheizung_Wattabfrage').getState();
+
+        summe = Boiler + Infra;
+
+        if (itemRegistry.getItem('Balkon_Kraftwerk_ShellyKanal1_Stromverbrauch1').getState() > summe && itemRegistry.getItem('Warmwasserboiler_Schalter_Optionen').getState() == '3') {
+          events.sendCommand('ON', itemRegistry.getItem('Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2').getState());
+          events.sendCommand('ON', itemRegistry.getItem('Warmwasserboiler').getState());
+        } else if (itemRegistry.getItem('Balkon_Kraftwerk_ShellyKanal1_Stromverbrauch1').getState() > Infra) {
+          events.sendCommand('ON', itemRegistry.getItem('Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2').getState());
+          events.sendCommand('OFF', itemRegistry.getItem('Warmwasserboiler').getState());
+        } else if (itemRegistry.getItem('Balkon_Kraftwerk_ShellyKanal1_Stromverbrauch1').getState() > summe) {
+          events.sendCommand('ON', itemRegistry.getItem('Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2').getState());
+          events.sendCommand('OFF', itemRegistry.getItem('Warmwasserboiler').getState());
+        } else {
+          events.sendCommand('OFF', itemRegistry.getItem('Hobbyraum_Infrarotheizung_ShellyKanal2_Betrieb_2').getState());
+          events.sendCommand('OFF', itemRegistry.getItem('Warmwasserboiler').getState());
+        }
+    type: script.ScriptAction
