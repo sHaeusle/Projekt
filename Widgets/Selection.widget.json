@@ -1,0 +1,35 @@
+{
+    "template": "<div style=\"margin:auto;padding:0px 0px 10px;\">{{config.title}}</div>\n<div class=\"btn-group\" btn-checkbox-true \n     ng-init=\"values = config.values.split(',');labels = config.labels.split(',')\">\n\n  <button type=\"button\" class=\"btn btn-primary\" ng-model=\"itemValue(config.item, true)\" uib-btn-radio=\"x\"\nng-click=\"sendCmd(config.item, x)\" ng-repeat=\"x in values track by $index\">{{labels[$index]}}</button>\n</div>",
+    "author": "Marcel Verpaalen",
+    "name": "Selection",
+    "description": "Switch between multiple configured options",
+    "settings": [
+        {
+            "type": "string",
+            "id": "title",
+            "label": "Title",
+            "default": "Title",
+            "description": "The title displayed above the buttons"
+        },
+        {
+            "type": "item",
+            "id": "item",
+            "label": "OpenHAB item",
+            "description": "Item that command gets sent to"
+        },
+        {
+            "type": "string",
+            "id": "labels",
+            "label": "Labels",
+            "default": "Zero,One",
+            "description": "A comma-separated array of labels for the buttons"
+        },
+        {
+            "type": "string",
+            "id": "values",
+            "label": "Values",
+            "description": "A comma-separated array of values corresponding to the labels, that gets sent as commands to the item",
+            "default": "0,1"
+        }
+    ]
+}
