@@ -1,0 +1,149 @@
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      cronExpression: 0/5 * * * * ? *
+    type: timer.GenericCronTrigger
+conditions:
+  - inputs: {}
+    id: "3"
+    configuration:
+      itemName: Warmwasserboiler_Schalter_Optionen
+      state: "1"
+      operator: =
+    type: core.ItemStateCondition
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      blockSource: <xml xmlns="https://developers.google.com/blockly/xml"><block
+        type="controls_if" id=":-Mj5v+S5?+_,C{Ywb3I" x="126" y="156"><mutation
+        else="1"></mutation><value name="IF0"><block type="oh_zdt_between"
+        id="rZFlR9w;Wsa03]PHgE4k"><field
+        name="dateComparison">dateandtime</field><value name="zdtOne"><shadow
+        type="oh_zdt" id="N[fx9S)fDa*f:#LwKjcK"><field
+        name="day">2023-01-23</field></shadow><block type="oh_zdt_now"
+        id="alin3BwHRbii(2%sf,Te"></block></value><value name="zdtTwo"><shadow
+        type="oh_zdt" id="tIe|f2_+R0IUO#e)5XTQ"><field
+        name="day">2023-01-23</field></shadow><block type="oh_zdt_fromItem"
+        id="HZ@cc|*P:N50`+wPiRe;"><value name="itemName"><shadow type="oh_item"
+        id="K$81Rmb$7qG42#sirJId"><field
+        name="itemName">Warmwasserboiler_datum_von</field></shadow></value></block></value><value
+        name="zdtThree"><shadow type="oh_zdt" id="tS+Nhwgx@eL@8LXB+,PJ"><field
+        name="day">2023-01-23</field></shadow><block type="oh_zdt_fromItem"
+        id="GfL$2X;sMtl9wXx84KeR"><value name="itemName"><shadow type="oh_item"
+        id="%5]WFG-{LIXel@HWr@8W"><field
+        name="itemName">Warmwasserboiler_datum_bis</field></shadow></value></block></value></block></value><statement
+        name="DO0"><block type="oh_event" id="Lbxf`LRmAiurPM:#r)PV"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="OiimaVtT34r(zH?L_*~["><field
+        name="TEXT">ON</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="856@O;*-,o9,A8Xd_4*)"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></statement><statement
+        name="ELSE"><block type="oh_event" id=";(Rs|zaekzgHe](0)PEO"><field
+        name="eventType">sendCommand</field><value name="value"><shadow
+        type="text" id="lsM,8/6Q*jH[6{4QMUY("><field
+        name="TEXT">OFF</field></shadow></value><value name="itemName"><shadow
+        type="oh_item" id="0.t$qi/]9SU4!S,U#%$~"><field
+        name="itemName">Warmwasserboiler</field></shadow></value></block></statement></block></xml>
+      type: application/javascript
+      script: >
+        function zdtCompare(zdt1, zdt2, compareOp, precision, compDate) {
+          switch (precision) {
+            case 'years':
+             zdt2 = zdt2.withMonth(zdt1.getMonthValue());
+            case 'months':
+             zdt2 = zdt2.withDayOfMonth(zdt1.getDayOfMonth());
+            case 'days':
+             zdt2 = zdt2.withHour(zdt1.getHour());
+            case 'hours':
+             zdt2 = zdt2.withMinute(zdt1.getMinute());
+            case 'minutes':
+             zdt2 = zdt2.withSecond(zdt1.getSecond());
+            case 'seconds':
+             zdt2 = zdt2.withNano(zdt1.getNano());
+          }
+          if (compDate === 'date') {
+            zdt1 = zdt1.toLocalDate();
+            zdt2 = zdt2.toLocalDate();
+          } else if (compDate === 'time') {
+            zdt1 = zdt1.toLocalTime();
+            zdt2 = zdt2.toLocalTime();
+          }
+          switch (compareOp) {
+            case 'before':
+              return zdt1.isBefore(zdt2);
+            case 'equal':
+              return zdt1.equals(zdt2);
+            case 'after':
+              return zdt1.isAfter(zdt2);
+            case 'beforeEqual':
+              return zdt1.isBefore(zdt2) || zdt1.equals(zdt2);
+            case 'afterEqual':
+              return zdt1.isAfter(zdt2) || zdt1.equals(zdt2);
+          }
+        }
+
+
+        var dtf = Java.type("java.time.format.DateTimeFormatter");
+
+
+        var zdt = Java.type("java.time.ZonedDateTime");
+
+
+        function getZonedDateTime(datetime) {
+          datetime = String(datetime).replace('T', ' ')
+          var regex_time_min =         /^\d{2}:\d{2}$/;
+          var regex_time_sec =         /^\d{2}:\d{2}:\d{2}$/;
+          var regex_date =             /^\d{4}-\d{2}-\d{2}$/;
+          var regex_date_time_min =    /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/;
+          var regex_date_time_sec =    /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/;
+          var regex_date_time_sec_tz = /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$/;
+          var regex_date_time_ms =     /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}\.\d{3}$/;
+          var regex_date_time_us =     /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}\.\d{6}$/;
+          var regex_date_time_ms_tz =  /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}\.\d{3}[+-]\d{2}:\d{2}$/;
+          var regex_date_time_us_tz =  /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}\.\d{6}[+-]\d{2}:\d{2}$/;
+          var regex_oh =               /^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}:\d{2}\.\d{3}[+-]\d{4}$/;
+          var now = zdt.now();
+          var now_year = now.getYear();
+          var now_month = now.getMonthValue();
+          var now_day = now.getDayOfMonth();
+          var today = '' + now_year;
+          today += '-' + ('0' + now_month).slice(-2);
+          today += '-' + ('0' + now_day).slice(-2)+' ';
+          switch (true) {
+            case regex_time_min.test(datetime): return zdt.parse(today + datetime + ':00+00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_time_sec.test(datetime): return zdt.parse(today + datetime + '+00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_date.test(datetime): return zdt.parse(datetime + ' 00:00:00+00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_date_time_min.test(datetime): return zdt.parse(datetime + ':00+00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_date_time_sec.test(datetime): return zdt.parse(datetime + '+00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_date_time_sec_tz.test(datetime): return zdt.parse(datetime, dtf.ofPattern('yyyy-MM-dd HH:mm:ssz'));
+            case regex_date_time_ms.test(datetime): return zdt.parse(datetime + ' +00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ss.SSS z'));
+            case regex_date_time_us.test(datetime): return zdt.parse(datetime + ' +00:00', dtf.ofPattern('yyyy-MM-dd HH:mm:ss.SSSSSS z'));
+            case regex_date_time_ms_tz.test(datetime): return zdt.parse(datetime, dtf.ofPattern('yyyy-MM-dd HH:mm:ss.SSSSz'));
+            case regex_date_time_us_tz.test(datetime): return zdt.parse(datetime, dtf.ofPattern('yyyy-MM-dd HH:mm:ss.SSSSSSSz'));
+            case regex_oh.test(datetime): return zdt.parse(datetime.slice(0,26) + ':' + datetime.slice(26,28), dtf.ofPattern('yyyy-MM-dd HH:mm:ss.SSSSz'));
+            default: return zdt.parse(datetime);
+          }
+        }
+
+
+        function createZonedDateTime(year, month, day, hour, minute, second, nano, offsetString, timezoneString) {
+          stringToParse = '' + year;
+          stringToParse += '-' + ('0' + month).slice(-2);
+          stringToParse += '-' + ('0' + day).slice(-2);
+          stringToParse += 'T' + ('0' + hour).slice(-2);
+          stringToParse += ':' + ('0' + minute).slice(-2);
+          stringToParse += ':' + ('0' + second).slice(-2);
+          stringToParse += '.' + nano + offsetString + '[' + timezoneString + ']';
+          return zdt.parse(stringToParse, dtf.ISO_ZONED_DATE_TIME);
+        }
+
+
+
+        if ((zdtCompare((itemRegistry.getItem('Warmwasserboiler_datum_von').getState().getZonedDateTime()), (zdt.now()), 'beforeEqual', 'nanos', 'dateandtime') && zdtCompare((zdt.now()), (itemRegistry.getItem('Warmwasserboiler_datum_bis').getState().getZonedDateTime()), 'beforeEqual', 'nanos', 'dateandtime'))) {
+          events.sendCommand('Warmwasserboiler', 'ON');
+        } else {
+          events.sendCommand('Warmwasserboiler', 'OFF');
+        }
+    type: script.ScriptAction

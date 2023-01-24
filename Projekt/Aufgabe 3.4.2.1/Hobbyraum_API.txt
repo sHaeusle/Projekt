@@ -1,0 +1,78 @@
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      itemName: Hobbyraum_Ruckgabewert
+    type: core.ItemStateUpdateTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      blockSource: <xml
+        xmlns="https://developers.google.com/blockly/xml"><variables><variable
+        id="5KMd8,|w;-{HJ{B`:E3g">Rückgabewert_Hobbyraum</variable><variable
+        id="KXaMhZo1_zkLgLem#@=)">Var_Temperatur</variable><variable
+        id="l/E_0Nmrtj+:og_?3yJR">Var_Luftfeuchtigkeit</variable></variables><block
+        type="variables_set" id="RZ}Ry*fKV^}[@_+zq=M1" x="103" y="81"><field
+        name="VAR"
+        id="5KMd8,|w;-{HJ{B`:E3g">Rückgabewert_Hobbyraum</field><value
+        name="VALUE"><block type="text_join" id="x$1+;P9PZD$Db3jwCR$d"><mutation
+        items="1"></mutation><value name="ADD0"><block type="oh_getitem_state"
+        id="aNgBz{WX0Ukq5XI-Ddvk"><value name="itemName"><shadow type="oh_item"
+        id="@YR-ePpaY:YX6!qm_!(8"><field
+        name="itemName">Hobbyraum_Ruckgabewert</field></shadow></value></block></value></block></value><next><block
+        type="variables_set" id="^CQ++h7_[@0XKg?q+3_v"><field name="VAR"
+        id="KXaMhZo1_zkLgLem#@=)">Var_Temperatur</field><value
+        name="VALUE"><block type="oh_transformation"
+        id="J${qkcFeaXPL!j54w%gA"><field name="type">JSONPATH</field><value
+        name="value"><shadow type="text" id="g3uXL8b]^0/t/;lOrTFL"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="EsY@=[H~5RS;=tODPbMC"><field name="VAR"
+        id="5KMd8,|w;-{HJ{B`:E3g">Rückgabewert_Hobbyraum</field></block></value><value
+        name="function"><shadow type="text" id="+yIt3b9O:-0y#~t_SsKd"><field
+        name="TEXT">$.devices[0].measurement.t1</field></shadow></value></block></value><next><block
+        type="oh_event" id="B*Su*///KxVu}!zCeHiU"><field
+        name="eventType">postUpdate</field><value name="value"><shadow
+        type="text" id="h^@fEsb.j0eX@i?-.0vz"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="d;$%[mfJ4!gHFb/N1yRY"><field name="VAR"
+        id="KXaMhZo1_zkLgLem#@=)">Var_Temperatur</field></block></value><value
+        name="itemName"><shadow type="oh_item" id=",).1:2gjkGSvp^tY{$W1"><field
+        name="itemName">Hobbyraum_Temperatur</field></shadow></value><next><block
+        type="variables_set" id=":`OqhL;x$61_:FWV1^Zt"><field name="VAR"
+        id="l/E_0Nmrtj+:og_?3yJR">Var_Luftfeuchtigkeit</field><value
+        name="VALUE"><block type="oh_transformation"
+        id="m3O[Hv.C_rXxN%eO5oy("><field name="type">JSONPATH</field><value
+        name="value"><shadow type="text"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="WV/,85.AVjl9~gIfpwaJ"><field name="VAR"
+        id="5KMd8,|w;-{HJ{B`:E3g">Rückgabewert_Hobbyraum</field></block></value><value
+        name="function"><shadow type="text" id="bT@!Q#ZA`U0U4|NcV9#M"><field
+        name="TEXT">$.devices[0].measurement.h</field></shadow></value></block></value><next><block
+        type="oh_event" id="y@-WkSK+A{Fb,Oj,x0:J"><field
+        name="eventType">postUpdate</field><value name="value"><shadow
+        type="text"><field name="TEXT">value</field></shadow><block
+        type="variables_get" id="k?E7@(b0/zkEN)]ZvA74"><field name="VAR"
+        id="l/E_0Nmrtj+:og_?3yJR">Var_Luftfeuchtigkeit</field></block></value><value
+        name="itemName"><shadow type="oh_item" id="fz9j++,c`foq-madTZO;"><field
+        name="itemName">Hobbyraum_Luftfeuchte</field></shadow></value></block></next></block></next></block></next></block></next></block></xml>
+      type: application/javascript
+      script: >
+        var R_C3_BCckgabewert_Hobbyraum, Var_Temperatur, Var_Luftfeuchtigkeit;
+
+
+        var transformation = Java.type('org.openhab.core.transform.actions.Transformation');
+
+
+
+        R_C3_BCckgabewert_Hobbyraum = String(itemRegistry.getItem('Hobbyraum_Ruckgabewert').getState());
+
+        Var_Temperatur = transformation.transform('JSONPATH', '$.devices[0].measurement.t1', R_C3_BCckgabewert_Hobbyraum);
+
+        events.postUpdate('Hobbyraum_Temperatur', Var_Temperatur);
+
+        Var_Luftfeuchtigkeit = transformation.transform('JSONPATH', '$.devices[0].measurement.h', R_C3_BCckgabewert_Hobbyraum);
+
+        events.postUpdate('Hobbyraum_Luftfeuchte', Var_Luftfeuchtigkeit);
+    type: script.ScriptAction

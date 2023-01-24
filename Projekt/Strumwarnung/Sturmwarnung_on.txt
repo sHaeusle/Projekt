@@ -1,0 +1,56 @@
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      itemName: Balkon_Strumwarnung_senden
+      state: ON
+      previousState: OFF
+    type: core.ItemStateChangeTrigger
+conditions: []
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      type: application/javascript
+      script: >2
+         var HttpUtil = Java.type("org.openhab.core.io.net.http.HttpUtil") 
+
+         var urlmessage = encodeURI("Achtung starker Wind! Sind Sonnenschirm und Markise geschlossen?") 
+         
+         var nummer1 = itemRegistry.getItem('Handynummer_1').getState() 
+         var KEY1 =  itemRegistry.getItem('KEY_1').getState()
+         HttpUtil.executeUrl("GET", "https://api.callmebot.com/whatsapp.php?phone="+ nummer1 +"&apikey="+ KEY1 +"&text=" + urlmessage , 2000) 
+         
+         
+         var HttpUtil = Java.type("org.openhab.core.io.net.http.HttpUtil") 
+
+         var urlmessage = encodeURI("Achtung starker Wind! Sind Sonnenschirm und Markise geschlossen?") 
+         
+         var nummer2 = itemRegistry.getItem('Handynummer_2').getState() 
+         var KEY2 =  itemRegistry.getItem('KEY_2').getState()
+         HttpUtil.executeUrl("GET", "https://api.callmebot.com/whatsapp.php?phone="+ nummer2 +"&apikey="+ KEY2 +"&text=" + urlmessage , 2000) 
+         
+         
+         
+         var HttpUtil = Java.type("org.openhab.core.io.net.http.HttpUtil") 
+
+         var urlmessage = encodeURI("Achtung starker Wind! Sind Sonnenschirm und Markise geschlossen?") 
+         
+         var nummer3 = itemRegistry.getItem('Handynummer_3').getState() 
+         var KEY3 =  itemRegistry.getItem('KEY_3').getState()
+         HttpUtil.executeUrl("GET", "https://api.callmebot.com/whatsapp.php?phone="+ nummer3 +"&apikey="+ KEY3 +"&text=" + urlmessage , 2000) 
+         
+         
+         var HttpUtil = Java.type("org.openhab.core.io.net.http.HttpUtil") 
+         var urlmessage = encodeURI("Achtung starker Wind! Sind Sonnenschirm und Markise geschlossen?") 
+         var nummer4 = itemRegistry.getItem('Handynummer_4').getState() 
+         var KEY4 =  itemRegistry.getItem('KEY_4').getState()
+         HttpUtil.executeUrl("GET", "https://api.callmebot.com/whatsapp.php?phone="+ nummer4 +"&apikey="+ KEY4 +"&text=" + urlmessage , 2000) 
+         
+         
+          var HttpUtil = Java.type("org.openhab.core.io.net.http.HttpUtil") 
+         var urlmessage = encodeURI("Achtung starker Wind! Sind Sonnenschirm und Markise geschlossen?") 
+         var nummer5 = itemRegistry.getItem('Handynummer_5').getState() 
+         var KEY5 =  itemRegistry.getItem('KEY_5').getState()
+         HttpUtil.executeUrl("GET", "https://api.callmebot.com/whatsapp.php?phone="+ nummer5 +"&apikey="+ KEY5 +"&text=" + urlmessage , 2000) 
+    type: script.ScriptAction
