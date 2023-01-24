@@ -1,0 +1,55 @@
+In den einzelen Dateien ist der Code für alle benötigten Regeln hinterlegt. Somit kann der Benutzer diese herunterladen und sie in den entsprechenden Regeln unter "Code" einfügen. 
+Somit muss der Benutzer keine eigenen Einstellungen zusammenklicken. 
+
+Die Struktur der Dateien fängt immer mit der "Wann soll etwas gemacht werden Bedingung an".
+Beispiel: 
+configuration: {}
+triggers:
+  - id: "1"
+    configuration:
+      itemName: Mobile_Alerts_Ruckgabewert
+    type: core.ItemStateUpdateTrigger
+    
+    
+Es geht dann immer mit der Initialisierung der Items, die in der Regel benötigt werden, weiter:
+Beispiel: 
+actions:
+  - inputs: {}
+    id: "2"
+    configuration:
+      blockSource: <xml
+        xmlns="https://developers.google.com/blockly/xml"><variables><variable
+        id="*2yvSXo[e},Pt;bbhA9D">Rückgabewert</variable><variable
+        id="X0P|CZn1yp-T;w8mmNww">Sensorwert_kmh</variable><variable
+        id="A}}Ucf0E*I$6q[M*1o8c">Sensorwert_Boehe</variable></variables><block
+        type="variables_set" id="DGd/*l#:qV$mt_/txd!(" x="75" y="97"><field
+        name="VAR" id="*2yvSXo[e},Pt;bbhA9D">Rückgabewert</field><value
+        name="VALUE"><block type="text_join" id="N#;T2a{G{+)_J(RbMjg{"><mutation
+        items="1"></mutation><value name="ADD0"><block type="oh_getitem_state"
+        id="JH)g,i!o`x^gy)YoJ4ZO"><value name="itemName"><shadow type="oh_item"
+        id="Umbt1CyzI=W~kZn5klB)"><field
+        name="itemName">Mobile_Alerts_Ruckgabewert</field></shadow></value></block></value></block></value><next><block
+        type="variables_set" id="9:y:[-jyR3/gM/RH(u^V"><field name="VAR"
+        id="X0P|CZn1yp-T;w8mmNww">Sensorwert_kmh</field><value
+        name="VALUE"><block type="oh_transformation"
+        id="oK@CB_Bf!Z`x|-`+=_w^"><field name="type">JSONPATH</field><value
+        name="value"><shadow type="text" id="1pEjUg}sZY;MsQGRu(%+"><field
+        name="TEXT">value</field></shadow><block type="variables_get"
+        id="@csdJarLDPGRtS|=tatq"><field 
+  
+  Als letztes kommt dann der Teil der ausgeführt werden soll. Hier werden die Blockly-Blöcke aus Openhab in Code formatiert.
+  Beispiel:
+  script: >
+        var R_C3_BCckgabewert, Sensorwert_kmh, Sensorwert_Boehe;
+        var transformation = Java.type('org.openhab.core.transform.actions.Transformation');
+        R_C3_BCckgabewert = String(itemRegistry.getItem('Mobile_Alerts_Ruckgabewert').getState());
+        Sensorwert_kmh = transformation.transform('JSONPATH', '$.devices[0].measurement.ws', R_C3_BCckgabewert);
+        Sensorwert_kmh = Sensorwert_kmh * 3.6;
+        Sensorwert_kmh = Math.round(Sensorwert_kmh * 100) / 100;
+        events.postUpdate('Windstaerke', Sensorwert_kmh);
+        Sensorwert_Boehe = transformation.transform('JSONPATH', '$.devices[0].measurement.wg', R_C3_BCckgabewert);
+        Sensorwert_Boehe = Sensorwert_Boehe * 3.6;
+        Sensorwert_Boehe = Math.round(Sensorwert_Boehe * 100) / 100;
+        events.postUpdate('Wind_Boehe', Sensorwert_Boehe);
+    type: script.ScriptAction
+ 
